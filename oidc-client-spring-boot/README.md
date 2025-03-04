@@ -1,5 +1,5 @@
 # oidc-auth-client
-oidc-auth-client is a Java and Spring Boot library for retrieving and caching access tokens from an OpenID Connect (OIDC) provider. 
+oidc-auth-client is a Java and Spring Boot library for retrieving and caching access tokens from an OpenID Connect (OIDC) provider.
 It simplifies authentication by handling token acquisition, caching, and renewal, making secure API calls easier.
 
 ## Features
@@ -80,7 +80,7 @@ entur:
 ## Usage
 
 ### Spring Boot
-In a java Spring Boot application AccessTokenFactory can be auto wired: 
+In a java Spring Boot application AccessTokenFactory can be auto wired:
 
 ```java
 @Autowired
