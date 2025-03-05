@@ -32,6 +32,5 @@ jobs:
       - name: Publish to Sonatype
         run: ./gradlew publish
         env:
-          SONATYPE_GPG_KEY_PASSWORD: ${{ secrets.SONATYPE_GPG_KEY_PASSWORD }}
           SONATYPE_AUTH_USER: ${{ secrets.SONATYPE_AUTH_USER }}
           SONATYPE_AUTH_TOKEN: ${{ secrets.SONATYPE_AUTH_TOKEN }}
