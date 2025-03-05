@@ -23,9 +23,6 @@ signing {
     publishing.publications.withType(MavenPublication).configureEach {
         sign it
     }
-
-    // Ensure GPG works in CI without a TTY
-    options.put("gpg.arguments", "--pinentry-mode=loopback")
 }
 
 publishing {

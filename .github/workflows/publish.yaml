@@ -42,11 +42,19 @@ jobs:
         env:
           SONATYPE_GPG_KEY: ${{ secrets.SONATYPE_GPG_KEY }}
 
+      - name: Ensure GPG Works in CI
+        run: |
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          export GPG_TTY=$(tty)
+        shell: bash
+
       - name: Publish to Sonatype
         run: ./gradlew publish
         env:
           SONATYPE_AUTH_USER: ${{ secrets.SONATYPE_AUTH_USER }}
           SONATYPE_AUTH_TOKEN: ${{ secrets.SONATYPE_AUTH_TOKEN }}
+          GPG_TTY: $(tty)
 
       - name: Upgrade version
         shell: bash
