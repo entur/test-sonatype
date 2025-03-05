@@ -1,10 +1,12 @@
-name: Publish Snapshot to JFrog
+name: Publish Snapshot to Sonatype
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
