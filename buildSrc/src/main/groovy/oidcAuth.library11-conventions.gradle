@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'io.github.gradle-nexus.publish-plugin' version '1.3.0'
     id 'oidcAuth.java11-conventions'
 }
 
@@ -80,6 +81,15 @@ publishing {
                 username = findProperty("sonatypeUsername") ?: System.getenv("SONATYPE_AUTH_USER")
                 password = findProperty("sonatypePassword") ?: System.getenv("SONATYPE_AUTH_TOKEN")
             }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            username = findProperty("sonatypeUsername") ?: System.getenv("SONATYPE_AUTH_USER")
+            password = findProperty("sonatypePassword") ?: System.getenv("SONATYPE_AUTH_TOKEN")
         }
     }
 }
