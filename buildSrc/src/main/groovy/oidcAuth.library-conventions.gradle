@@ -29,6 +29,8 @@ publishing {
     publications {
         library(MavenPublication) {
             from components.java
+
+            artifact(tasks.jar)  // Ensure main JAR is explicitly included
             artifact sourcesJar
             artifact javadocJar
 
