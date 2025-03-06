@@ -49,7 +49,7 @@ repositories {
  *************************************************************/
 
 checkstyle {
-    config = resources.text.fromString(com.example.CheckstyleUtil.getCheckstyleConfig("/checkstyle.xml"))
+    config = resources.text.fromString(org.entur.auth.CheckstyleUtil.getCheckstyleConfig("/checkstyle.xml"))
     maxWarnings = 0
 }
 

@@ -1,4 +1,4 @@
-package com.example;
+package org.entur.auth;
 
 import java.io.BufferedReader;
 import java.io.IOException;

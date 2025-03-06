@@ -1,5 +1,6 @@
 plugins {
-    id 'oidcAuth.library11-conventions'
+    id 'oidcAuth.java11-conventions'
+    id 'oidcAuth.library-conventions'
 }
 
 java {
