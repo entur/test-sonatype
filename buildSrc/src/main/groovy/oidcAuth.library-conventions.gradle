@@ -17,11 +17,13 @@ tasks.register('javadocJar', Jar) {
     from javadoc.destinationDir
 }
 
-signing {
-    useGpgCmd()
+if(project.hasProperty("signing.gnupg.keyName")) {
+    signing {
+        useGpgCmd()
 
-    publishing.publications.withType(MavenPublication).configureEach {
-        sign it
+        publishing.publications.withType(MavenPublication).configureEach {
+            sign it
+        }
     }
 }
 
@@ -29,8 +31,6 @@ publishing {
     publications {
         library(MavenPublication) {
             from components.java
-
-            artifact(tasks.jar)  // Ensure main JAR is explicitly included
             artifact sourcesJar
             artifact javadocJar
 
