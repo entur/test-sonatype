@@ -12,12 +12,12 @@ subprojects {
         wiremockVersion = '3.12.0'
         googleTruthVersion   = '1.4.4'
         mockitoVersion = '5.11.0'
-        guavaVersion = '33.4.0-jre'
+        guavaVersion = '33.4.5-jre'
         apacheCommonsVersion = '2.18.0'
         apacheCommonsCodecVersion = '1.16.1'
         lombokVersion = '1.18.36'
         jjwtVersion = '0.12.6'
-        springBoot3Version = '3.4.3'
+        springBoot3Version = '3.4.4'
         caffeineVersion = "3.2.0"
         jaxbVersion = '4.0.2'
         glassfishJaxbVersion = '4.0.5'
@@ -29,6 +29,6 @@ subprojects {
         restAssuredVersion = '5.5.1'
         servletApiVersion = '4.0.1'
 
-        logback14xVersion = '1.5.17'
+        logback14xVersion = '1.5.18'
     }
 }
