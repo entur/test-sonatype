@@ -6,13 +6,13 @@ plugins {
 subprojects {
     ext {
         javaJwtVersion = '4.5.0'
-        auth0JavaVersion = '2.18.0'
+        auth0JavaVersion = '2.19.0'
         junitPlatformVersion = '1.11.4'
         junitJupiterVersion  = '5.11.4'
         wiremockVersion = '3.12.0'
         googleTruthVersion   = '1.4.4'
         mockitoVersion = '5.11.0'
-        guavaVersion = '33.4.5-jre'
+        guavaVersion = '33.4.6-jre'
         apacheCommonsVersion = '2.18.0'
         apacheCommonsCodecVersion = '1.16.1'
         lombokVersion = '1.18.36'
