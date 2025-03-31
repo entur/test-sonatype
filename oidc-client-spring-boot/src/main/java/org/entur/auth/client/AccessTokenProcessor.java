@@ -32,11 +32,35 @@ class AccessTokenProcessor {
     public static Object postProcessBeforeInitialization(ApplicationContext applicationContext, Object bean, @NotNull String beanName) {
         Class<?> clazz = bean.getClass();
         ReflectionUtils.doWithFields(clazz, field -> {
-            if (field.isAnnotationPresent(AccessToken.class) && (RestTemplate.class.isAssignableFrom(field.getType()))) {
-                AccessTokenAnnotationRestTemplateProcessor.injectRestTemplate(applicationContext, bean, field);
+            if (field.isAnnotationPresent(AccessToken.class)) {
+                if (RestTemplate.class.isAssignableFrom(field.getType())) {
+                    AccessTokenAnnotationRestTemplateProcessor.inject(applicationContext, bean, field);
+                } else if(AccessTokenFactory.class.isAssignableFrom(field.getType())) {
+                    AccessTokenAnnotationAccessTokenFactoryProcessor.inject(applicationContext, bean, field);
+                }
             }
         });
+
         return bean;
+    }
+    /**
+     * Internal processor responsible for injecting {@link AccessTokenFactory} instances into fields annotated with {@link AccessToken}.
+     */
+    static class AccessTokenAnnotationAccessTokenFactoryProcessor {
+        /**
+         * Injects a {@link AccessTokenFactory} into the specified field of the given bean.
+         *
+         * @param applicationContext the Spring application context
+         * @param bean the bean instance containing the annotated field
+         * @param field the field to inject with a customized {@link AccessTokenFactory}
+         */
+        public static void inject(ApplicationContext applicationContext, Object bean, Field field) {
+            ReflectionUtils.makeAccessible(field);
+            AccessToken annotation = field.getAnnotation(AccessToken.class);
+            AccessTokenFactory accessTokenFactory = AccessTokenAnnotationRestTemplateProcessor.getAccessTokenFactory(applicationContext, annotation.value());
+            ReflectionUtils.setField(field, bean, accessTokenFactory);
+        }
+
     }
 
     /**
@@ -50,7 +74,7 @@ class AccessTokenProcessor {
          * @param bean the bean instance containing the annotated field
          * @param field the field to inject with a customized {@link RestTemplate}
          */
-        public static void injectRestTemplate(ApplicationContext applicationContext, Object bean, Field field) {
+        public static void inject(ApplicationContext applicationContext, Object bean, Field field) {
             ReflectionUtils.makeAccessible(field);
             AccessToken annotation = field.getAnnotation(AccessToken.class);
             AccessTokenFactory accessTokenFactory = getAccessTokenFactory(applicationContext, annotation.value());
@@ -69,7 +93,7 @@ class AccessTokenProcessor {
          * @return the resolved {@link AccessTokenFactory} bean
          * @throws IllegalStateException if no suitable {@link AccessTokenFactory} bean is found
          */
-        private static AccessTokenFactory getAccessTokenFactory(ApplicationContext applicationContext, String name) {
+        public static AccessTokenFactory getAccessTokenFactory(ApplicationContext applicationContext, String name) {
             try {
                 if (name == null || name.isBlank()) {
                     return applicationContext.getBean(AccessTokenFactory.class);
