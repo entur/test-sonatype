@@ -84,7 +84,7 @@ A valid access token can then be retrieved from accessTokenFactory by doing the 
 var accessToken = accessTokenFactory.getAccessToken();
 ```
 
-RestTemplate with bearer token will be created with annotation: 
+To create a RestTemplate with a bearer token, annotations can be used: 
 ```java
 public class AuthData {
     @AccessToken("auth0")
