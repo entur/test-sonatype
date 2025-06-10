@@ -1,2 +1,2 @@
-rootProject.name = 'oidc-auth-client-sonatype-test'
-include 'oidc-client', 'oidc-client-spring-boot'
+rootProject.name = 'sonatype-test'
+include 'oidc-client'
