@@ -5,7 +5,7 @@ on:
 jobs:
   publish:
     name: Publish Snapshot to Maven Central
-    uses: entur/gha-maven-central/.github/workflows/gradle-publish.yml@brand-new
+    uses: entur/gha-maven-central/.github/workflows/gradle-publish.yml@feat/brand-new
     with:
       next_version_suffix: ''
       push_to_repo: false
