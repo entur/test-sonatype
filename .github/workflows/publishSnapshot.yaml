@@ -14,6 +14,5 @@ jobs:
     with:
       next_version: ${{ inputs.next_version }}
       push_to_repo: false
-      publish: false
       snapshot: true
     secrets: inherit
