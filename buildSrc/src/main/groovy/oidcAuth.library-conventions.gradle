@@ -60,7 +60,9 @@ publishing {
 
     repositories {
         maven {
-            url = layout.buildDirectory.dir('staging-deploy')
+            url = project.version.endsWith("-SNAPSHOT")
+                    ? "https://central.sonatype.com/repository/maven-snapshots/"
+                    : layout.buildDirectory.dir('staging-deploy')
         }
     }
 }
