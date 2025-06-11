@@ -29,7 +29,7 @@ publishing {
 
             pom {
                 name = project.name
-                description = "A Java and Spring Boot library for obtaining client tokens from an OIDC provider"
+                description = "Test file"
                 packaging = 'jar'
 
                 url = "https://github.com/entur/${rootProject.name}"
@@ -49,11 +49,11 @@ publishing {
 
                 developers {
                     developer {
-                        id = "vevik"
-                        name = "Vidar Vevik"
-                        email = "vidar.vedvik@entur.org"
-                        }
+                        id = "reite"
+                        name = "Fredrik Wilhelm Reite"
+                        email = "fredrik.wilhelm.reite@entur.org"
                     }
+                }
             }
         }
     }
