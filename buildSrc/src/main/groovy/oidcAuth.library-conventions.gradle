@@ -76,8 +76,7 @@ jreleaser {
                 app {
                     active = 'ALWAYS'
                     url = 'https://central.sonatype.com/api/v1/publisher'
-                    snapshotSupported=true
-                    stagingRepository('build/staging-deploy')
+                    stagingRepository('target/staging-deploy')
                 }
             }
         }

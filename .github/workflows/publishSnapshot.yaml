@@ -13,7 +13,7 @@ jobs:
     uses: entur/gha-maven-central/.github/workflows/gradle-publish.yml@feat/brand-new
     with:
       next_version: ${{ inputs.next_version }}
-      next_version_suffix: '-SNAPSHOT'
       push_to_repo: false
       publish: false
+      snapshot: true
     secrets: inherit

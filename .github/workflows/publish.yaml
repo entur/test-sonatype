@@ -7,33 +7,4 @@ jobs:
   publish:
     name: Publish to Maven Central
     uses: entur/gha-maven-central/.github/workflows/gradle-publish.yml@brand-new
-    with:
-      # Fetch newest versions from tags
-      version_strategy: 'tag'
-      version_tag_prefix: ''
-      # Keep version as is, do not bump
-      next_version: ''
-      push_to_repo: false
     secrets: inherit
-
-  update-version:
-    runs-on: ubuntu-latest
-    needs: publish
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-
-      - name: Increment Version
-        id: increment-version
-        uses: entur/gha-maven-central/.github/actions/increment-version@brand-new
-        with:
-          previous_version: ${{ needs.publish.outputs.version }}
-          next_version_suffix: "-SNAPSHOT"
-
-      - name: Update Version
-        id: update-version
-        uses: entur/gha-maven-central/.github/actions/update-version@brand-new
-        with:
-          version: ${{ steps.increment-version.outputs.version }}
