@@ -9,4 +9,5 @@ jobs:
     with:
       next_version_suffix: ''
       push_to_repo: false
+      publish: false
     secrets: inherit
