@@ -82,7 +82,7 @@ jreleaser {
             nexus2 {
                 app {
                     active = 'SNAPSHOT'
-                    applyCentralMavenRules = true
+                    applyMavenCentralRules = true
                     snapshotSupported = true
                     closeRepository = true
                     releaseRepository = true
